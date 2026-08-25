@@ -1,0 +1,6 @@
+# Worker name must match the Cloudflare dashboard project name.
+name = "cleanup-gurugram"
+compatibility_date = "2024-08-20"
+
+[assets]
+directory = "./"
