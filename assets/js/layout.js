@@ -4,6 +4,22 @@
   const base = html.dataset.base || "./";
   const path = (file) => base + file;
   const logoSrc = path("assets/images/logo-og.jpeg");
+  const instagramUrl = "https://www.instagram.com/cleanup.gurugram";
+  const whatsappGroupUrl = "https://chat.whatsapp.com/H8v9cS5PIAoGjOqQ3hWyhl";
+  const whatsappPhone = "919621831353";
+  const contactEmail = "contact.cleanupgurugram@gmail.com";
+  const contactLocation = "Sector 79, Gurugram, Haryana";
+  const whatsappMessage = encodeURIComponent(
+    "Hi, I found Cleanup Gurugram online and would like to contribute to the cause."
+  );
+  const whatsappWebUrl = `https://wa.me/${whatsappPhone}?text=${whatsappMessage}`;
+  const whatsappAppUrl = `whatsapp://send?phone=${whatsappPhone}&text=${whatsappMessage}`;
+  const whatsappAndroidUrl = `intent://send?phone=${whatsappPhone}&text=${whatsappMessage}#Intent;scheme=whatsapp;package=com.whatsapp;S.browser_fallback_url=${encodeURIComponent(whatsappWebUrl)};end`;
+  const whatsappIcon = `
+    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  `;
 
   const navItems = [
     { id: "home", href: "index.html", label: "Home" },
@@ -42,31 +58,26 @@
   const header = `
     <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe">
       <div class="h-20 max-w-7xl mx-auto px-margin-mobile lg:px-margin-desktop flex items-center justify-between">
-        <div class="flex items-center gap-xs">
-          <button type="button" class="lg:hidden w-11 h-11 flex items-center justify-center -ml-2 text-on-surface" data-drawer-open aria-controls="mobile-drawer" aria-expanded="false" aria-label="Open menu">
-            <span class="material-symbols-outlined">menu</span>
-          </button>
-          <a href="${path("index.html")}" class="flex items-center gap-xs">
-            <span class="header-logo-mark">
-              <img alt="Cleanup Gurugram logo" src="${logoSrc}" />
-            </span>
-            <span class="font-headline-md text-headline-md text-primary hidden sm:block">Cleanup Gurugram</span>
-          </a>
-        </div>
+        <a href="${path("index.html")}" class="flex items-center gap-xs">
+          <span class="header-logo-mark">
+            <img alt="Cleanup Gurugram logo" src="${logoSrc}" />
+          </span>
+          <span class="font-headline-md text-headline-md text-primary hidden sm:block">Cleanup Gurugram</span>
+        </a>
         <nav class="hidden lg:flex items-center gap-md" aria-label="Primary">
           ${desktopNav}
         </nav>
         <div class="flex items-center gap-sm">
           <a href="${path("join.html")}" class="hidden md:inline-flex bg-secondary-container text-on-secondary-container px-md py-xs rounded-full font-label-bold hover:bg-secondary hover:text-on-secondary transition-all">Volunteer Now</a>
-          <!-- <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center" aria-hidden="true">
-            <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
-          </div> -->
+          <button type="button" class="lg:hidden w-11 h-11 flex items-center justify-center -mr-2 text-on-surface" data-drawer-open aria-controls="mobile-drawer" aria-expanded="false" aria-label="Open menu">
+            <span class="material-symbols-outlined">menu</span>
+          </button>
         </div>
       </div>
     </header>
     <div id="mobile-drawer" class="fixed inset-0 z-[60] lg:hidden" hidden>
       <button type="button" class="absolute inset-0 bg-on-surface/40" data-drawer-close aria-label="Close menu"></button>
-      <aside class="relative h-full w-[min(20rem,86vw)] bg-surface shadow-xl flex flex-col pt-safe">
+      <aside class="absolute top-0 right-0 h-full w-[min(20rem,86vw)] bg-surface shadow-xl flex flex-col pt-safe">
         <div class="h-20 px-margin-mobile flex items-center justify-between border-b border-outline-variant">
           <span class="font-headline-md text-headline-md text-primary">Menu</span>
           <button type="button" class="w-11 h-11 flex items-center justify-center text-on-surface" data-drawer-close aria-label="Close menu">
@@ -107,17 +118,17 @@
           <div class="flex flex-col gap-sm">
             <h2 class="font-label-bold text-label-bold text-on-surface uppercase tracking-wider">Connect</h2>
             <div class="flex gap-sm">
-              <a class="text-on-surface-variant hover:text-primary" href="mailto:hello@cleanupgurugram.org" aria-label="Email">
+              <a class="text-on-surface-variant hover:text-primary" href="mailto:${contactEmail}" aria-label="Email">
                 <span class="material-symbols-outlined">mail</span>
               </a>
-              <a class="text-on-surface-variant hover:text-primary" href="tel:+911244000000" aria-label="Call">
+              <a class="text-on-surface-variant hover:text-primary" href="tel:+${whatsappPhone}" aria-label="Call">
                 <span class="material-symbols-outlined">call</span>
               </a>
               <a class="text-on-surface-variant hover:text-primary" href="${path("about.html")}#contact" aria-label="Location">
                 <span class="material-symbols-outlined">location_on</span>
               </a>
             </div>
-            <p class="text-label-sm text-on-surface-variant">Sector 44, Gurugram, Haryana</p>
+            <p class="text-label-sm text-on-surface-variant">${contactLocation}</p>
           </div>
         </div>
         <div class="pt-md border-t border-outline-variant flex flex-col md:flex-row justify-between items-center gap-sm text-label-sm text-on-surface-variant">
@@ -125,7 +136,7 @@
           <div class="flex gap-md items-center">
             <span>Follow Us</span>
             <div class="flex gap-xs">
-              <a class="hover:text-primary" href="https://instagram.com/cleanupgurugram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a class="hover:text-primary" href="${instagramUrl}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <span class="material-symbols-outlined text-[20px]">photo_camera</span>
               </a>
               <a class="hover:text-primary" href="${path("about.html")}#contact" aria-label="Website">
@@ -168,8 +179,8 @@
         </a>
       </div>
     </nav>
-    <a class="fixed bottom-24 right-4 lg:bottom-6 lg:right-6 z-[60] w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform" href="https://wa.me/" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-      <span class="material-symbols-outlined text-[32px]">chat</span>
+    <a id="whatsapp-float" class="fixed bottom-24 right-4 lg:bottom-6 lg:right-6 z-[60] w-14 h-14 bg-[var(--color-whatsapp)] text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform" href="${whatsappWebUrl}" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+      ${whatsappIcon}
     </a>
   `;
 
@@ -193,5 +204,33 @@
   );
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") setDrawer(false);
+  });
+
+  const whatsappBtn = document.getElementById("whatsapp-float");
+  const userAgent = navigator.userAgent || "";
+  const isAndroid = /Android/i.test(userAgent);
+  const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+  const isMobile = isAndroid || isIOS;
+
+  if (whatsappBtn) {
+    if (isMobile) {
+      whatsappBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.location.href = isAndroid ? whatsappAndroidUrl : whatsappAppUrl;
+      });
+    } else {
+      whatsappBtn.setAttribute("target", "_blank");
+    }
+  }
+
+  document.querySelectorAll("[data-whatsapp-group]").forEach((link) => {
+    link.href = whatsappGroupUrl;
+    if (isMobile) {
+      link.removeAttribute("target");
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.location.href = whatsappGroupUrl;
+      });
+    }
   });
 })();
